@@ -1,3 +1,551 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --rgb-primary: 27, 166, 114;
+  --rgb-primary-dark: 0, 133, 102;
+  --rgb-secondary: 255, 235, 133;
+  --rgb-dark-gray: 129, 126, 116;
+  --rgb-medium-gray: 225, 223, 214;
+  --rgb-light-gray: 252, 252, 247;
+  --rgb-almost-black: 28, 49, 43;
+  --rgb-almost-white: 236, 233, 230;
+  --rgb-ink: var(--rgb-almost-black);
+  --rgb-background: 256, 256, 256;
+  --rgb-elevated-background: 256, 256, 256;
+  --color-primary: rgb(var(--rgb-primary));
+  --color-primary-dark: rgb(var(--rgb-primary-dark));
+  --color-secondary: rgb(var(--rgb-secondary));
+  --color-dark-gray: rgb(var(--rgb-dark-gray));
+  --color-medium-gray: rgb(var(--rgb-medium-gray));
+  --color-light-gray: rgb(var(--rgb-light-gray));
+  --color-almost-black: rgb(var(--rgb-almost-black));
+  --color-almost-white: rgb(var(--rgb-almost-white));
+  --color-ink: rgb(var(--rgb-ink));
+  --color-ink-light: rgba(var(--rgb-ink), 0.66);
+  --color-background: rgb(var(--rgb-background));
+  --color-elevated-background: rgb(var(--rgb-elevated-background));
+}
+
+:root[data-color-scheme="dark"] {
+  --rgb-medium-gray: 45, 50, 55;
+  --rgb-light-gray: 22, 27, 34;
+  --rgb-ink: var(--rgb-almost-white);
+  --rgb-background: 6, 9, 15;
+  --rgb-elevated-background: 13, 17, 23;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-color-scheme="light"]) {
+    --rgb-medium-gray: 45, 50, 55;
+    --rgb-light-gray: 22, 27, 34;
+    --rgb-ink: var(--rgb-almost-white);
+    --rgb-background: 6, 9, 15;
+    --rgb-elevated-background: 13, 17, 23;
+  }
+}
+
+html {
+  @apply bg-background text-ink;
+  -webkit-tap-highlight-color: transparent;
+  font-size: 0.8rem;
+}
+
+@screen sm {
+  html {
+    font-size: 1rem;
+  }
+}
+
+h1 {
+  @apply font-sans font-bold leading-none text-xx-large;
+}
+
+h2 {
+  @apply font-sans text-3xl font-bold leading-none;
+}
+
+.text-hint {
+  @apply font-sans text-base text-ink-light;
+}
+
+.text-normal {
+  @apply font-sans text-xl;
+}
+
+.text-highlight {
+  @apply font-sans text-xl font-bold;
+}
+
+.decorated {
+  @apply underline text-primary-dark;
+}
+
+.content-tight {
+  @apply max-w-lg mx-auto;
+}
+
+.content-snug {
+  @apply max-w-2xl mx-auto;
+}
+
+.content-normal {
+  @apply max-w-4xl mx-auto;
+}
+
+.content-large {
+  @apply mx-auto max-w-7xl;
+}
+
+.sheet {
+  @apply shadow-sheet bg-elevated-background;
+}
+
+:root[data-color-scheme="dark"] .sheet {
+  @apply shadow-none;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-color-scheme="light"]) .sheet {
+    @apply shadow-none;
+  }
+}
+
+@screen sm {
+  .sheet {
+    @apply rounded-sheet;
+  }
+}
+
+@screen md {
+  .md\:sheet {
+    @apply sheet
+  }
+}
+
+.action-surface {
+  @apply overflow-hidden bg-light-gray rounded-xl;
+}
+
+.action-group-vertical {
+  @apply divide-y divide-medium-gray;
+}
+
+.action-button {
+  @apply flex items-center flex-1 px-4 py-4 cursor-pointer text-normal focus:outline-none;
+}
+
+.action-button:hover {
+  @apply bg-medium-gray;
+}
+
+@screen md {
+  .action-button {
+    @apply px-8;
+  }
+}
+
+.form-input {
+  @apply bg-transparent border-gray-300 rounded-md focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50;
+}
+
+.form-textarea {
+  @apply bg-transparent border-gray-300 rounded-md focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50;
+}
+
+.form-select {
+  @apply bg-transparent border-gray-300 rounded-md shadow-none focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50;
+}
+
+.form-label {
+  @apply block font-sans text-xl font-bold;
+}
+
+.select-field {
+  @apply block text-normal;
+}
+
+.select-field:focus {
+  @apply shadow-none outline-none border-primary-dark;
+}
+
+.text-field {
+  @apply block px-3 py-3 mt-1 font-sans text-xl leading-5 transition duration-150 ease-in-out border border-gray-300 rounded-md;
+}
+
+.text-field:focus {
+  @apply shadow-none outline-none border-primary-dark ring-transparent;
+}
+
+.big-number-field {
+  @apply py-3 mt-1 font-sans text-6xl font-semibold leading-5 text-center transition duration-150 ease-in-out;
+}
+
+.big-number-field::placeholder {
+  @apply text-medium-gray;
+}
+
+.big-number-field:focus {
+  @apply shadow-none outline-none border-primary-dark ring-transparent;
+}
+
+.currency-field {
+  @apply flex;
+}
+
+.currency-field > input {
+  @apply flex-1 min-w-0 mt-0 rounded-none rounded-l-md;
+}
+
+.currency-field > span {
+  @apply inline-flex items-center px-3 border border-l-0 border-medium-gray text-ink-light rounded-r-md bg-light-gray;
+}
+
+.btn {
+  @apply px-6 py-3 font-sans text-xl font-medium rounded-full cursor-pointer;
+}
+
+.btn:focus {
+  @apply outline-none;
+}
+
+.btn-outline-primary-dark {
+  @apply border-2 text-primary-dark border-primary-dark;
+}
+
+.btn-outline-warning {
+  @apply text-red-700 bg-transparent border border-red-700;
+}
+
+.btn-warning {
+  @apply text-white bg-red-700;
+}
+
+.btn-warning:hover {
+  @apply bg-red-600;
+}
+
+.btn-warning:active {
+  @apply bg-red-800;
+}
+
+.btn-secondary {
+  @apply text-almost-black bg-secondary;
+}
+
+.btn-secondary:focus {
+  @apply ring-yellow-500;
+}
+
+.btn-primary {
+  @apply text-white bg-primary;
+}
+
+.btn-primary:focus {
+  @apply ring-green-500;
+}
+
+.btn-disabled {
+  @apply text-white cursor-not-allowed bg-medium-gray;
+}
+
+.btn-with-icon {
+  @apply inline-flex items-center justify-center;
+}
+
+form[data-submitting="true"] .btn-with-loader {
+  @apply text-transparent cursor-not-allowed bg-medium-gray;
+}
+
+.loader {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: none;
+  margin:15px auto;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #FFF;
+  box-sizing: border-box;
+  animation: shadowExpandX 1s linear infinite alternate;
+}
+
+form[data-submitting="true"] .loader {
+  display: block;
+}
+
+[data-loading="true"] .loader {
+  display: block;
+}
+
+.card-gradient {
+  --bg-opacity: 1;
+  background: rgba(27,166,114, 1);
+  background: linear-gradient(45deg, rgba(27,166,114,1) 0%, rgba(255,235,133,1) 90%);
+}
+
+.toggle-container {
+  @apply relative inline-flex flex-shrink-0 h-6 transition-colors duration-200 ease-in-out bg-gray-200 border-2 border-transparent rounded-full cursor-pointer w-11;
+}
+
+.toggle-container:focus {
+  @apply outline-none ring;
+}
+
+.toggle-button {
+  @apply inline-block w-5 h-5 transition duration-200 ease-in-out transform translate-x-0 bg-white rounded-full shadow;
+}
+
+.toggle-checkbox:checked+.toggle-container {
+  @apply bg-green-500;
+}
+.toggle-checkbox:checked+.toggle-container .toggle-button {
+  @apply translate-x-5;
+}
+
+:root[data-color-scheme="dark"] .flatpickr-calendar {
+  filter: invert(95%);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-color-scheme="light"]) .flatpickr-calendar {
+    filter: invert(95%);
+  }
+}
+
+:root[data-color-scheme="light"] .button-color-scheme-light::after {
+  @apply absolute top-0 w-6 h-full right-8 text-ink-light;
+  content: "Selected";
+  text-indent: -999em;
+  filter: invert(50%) sepia(100%) saturate(6264%) hue-rotate(150deg);
+  background: url("check.svg") center right/100% no-repeat;
+}
+
+:root[data-color-scheme="dark"] .button-color-scheme-dark::after {
+  @apply absolute top-0 w-6 h-full right-8 text-ink-light;
+  content: "Selected";
+  text-indent: -999em;
+  filter: invert(50%) sepia(100%) saturate(6264%) hue-rotate(150deg);
+  background: url("check.svg") center right/100% no-repeat;
+}
+
+:root:not([data-color-scheme="light"]):not([data-color-scheme="dark"]) .button-color-scheme-default::after {
+  @apply absolute top-0 w-6 h-full right-8 text-ink-light;
+  content: "Selected";
+  text-indent: -999em;
+  filter: invert(50%) sepia(100%) saturate(6264%) hue-rotate(150deg);
+  background: url("check.svg") center right/100% no-repeat;
+}
+
+.step {
+  @apply invisible hidden opacity-0;
+}
+
+.step-showing {
+  @apply visible block opacity-100;
+}
+
+.step-entering:not(.step),
+.step-showing.step-entering {
+ animation: slide-in-from-left 0.5s both
+}
+
+.radio-card-container {
+  @apply relative px-4 py-2 border rounded-lg cursor-pointer border-medium-gray;
+}
+
+.radio-card-checkbox {
+  @apply hidden;
+}
+
+.radio-card-checkbox:checked + .radio-card-container {
+  @apply border-primary;
+}
+
+.radio-card-checkbox:checked + .radio-card-container .radio-card-indicator {
+  @apply absolute top-0 w-6 h-full right-8 text-ink-light;
+  content: "Selected";
+  text-indent: -999em;
+  filter: invert(50%) sepia(100%) saturate(6264%) hue-rotate(150deg);
+  background: url("check.svg") center right/100% no-repeat;
+}
+
+@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
+  .backdrop-blur {
+    backdrop-filter: blur(12px);
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+}
+.backdrop-blur {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+/* --------------
+// Dashboard & Console specific classes
+// --------------*/
+
+
+.dashboard-form-section {
+  @apply grid mb-16 space-y-8 md:grid-cols-2 md:space-y-0;
+}
+
+.dashboard-form-group {
+  @apply grid gap-8 p-8 border-2 md:grid-cols-2 border-medium-gray rounded-xl;
+}
+
+.dashboard-header {
+  @apply flex flex-col justify-between space-y-4 text-center sm:flex-row sm:space-y-0;
+}
+
+
+/* --------------
+// Old style classes
+// --------------*/
+
+.gusto-title-bold {
+  @apply text-4xl font-bold;
+}
+.gusto-headline {
+  @apply text-lg font-semibold;
+}
+.gusto-body {
+  @apply text-lg font-normal;
+}
+.gusto-callout {
+  @apply text-base font-normal;
+}
+.gusto-subhead {
+  @apply text-sm font-normal;
+}
+
+/* -------------------------------
+// Global browser specific styling
+// -------------------------------*/
+
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance:textfield;
+    @apply bg-transparent text-ink;
+}
+
+details summary::-webkit-details-marker{
+  display:none;
+}
+
+details summary {
+  list-style: none;
+}
+
+/* ----------
+// Animations
+// ----------*/
+
+@keyframes shadowExpandX {
+  0% {
+    box-shadow: 0 0, 0 0;
+    color: rgba(255, 255, 255, 0.2);
+  }
+  100% {
+    box-shadow: -24px 0, 24px 0;
+    color: rgba(255, 255, 255, 0.8);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translate3d(0, 100%, 0);
+    visibility: visible;
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.gusto-slide-up {
+  animation-name: slideUp;
+  animation-duration: 300ms;
+  transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  animation-fill-mode: both;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.gusto-fade-in {
+  animation-name: fadeIn;
+  animation-duration: 300ms;
+  transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  animation-fill-mode: both;
+}
+
+@keyframes pulse {
+  from {
+    transform: scale(1);
+  }
+
+  75% {
+    transform: scale(1.05);
+  }
+
+  to {
+    transform: scale(1);
+  }
+}
+
+.animation-pulse {
+  animation-name: pulse;
+  animation-duration: 150ms;
+  animation-timing-function: ease;
+}
+
+@keyframes skeleton {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: .5;
+  }
+}
+
+.animation-skeleton {
+  animation: skeleton 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes slide-in-from-left {
+  0% {
+    opacity:0
+  }
+  40% {
+    transform:translateX(320px);
+    opacity:0
+  }
+  80% {
+    transform:translateX(0);
+    opacity:1
+  }
+}
+
+/* ----------
+// Terminal CSS
+// ----------*/
+
+.show\@modal\:terminal,
+.show\@terminal {
+  display: none;
+}
