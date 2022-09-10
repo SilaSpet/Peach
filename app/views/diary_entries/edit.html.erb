@@ -1,10 +1,11 @@
-<h1>Editing Diary Entry</h1>
+<p class="my-8 text-center">
+  <%= link_to '← Diary Entries', diary_entries_path, class: "btn btn-outline-primary-dark" %>
+</p>
 
-<%= render "form", diary_entry: @diary_entry %>
+<section class="mt-8 content-snug">
+  <article class="p-4 sm:p-12 sheet">
+    <h1 class="mb-8 text-center">Editing Diary Entry</h1>
 
-<br>
-
-<div>
-  <%= link_to "Show this Diary Entry", @diary_entry %> |
-  <%= link_to "Back to Diary Entries", diary_entries_path %>
-</div>
+    <%= render "form", diary_entry: @diary_entry %>
+  </article>
+</section>
