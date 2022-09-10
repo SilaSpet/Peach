@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_09_124101) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_09_133727) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "plpgsql"
@@ -44,8 +44,18 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_09_124101) do
     t.index ["email"], name: "index_accounts_on_email", unique: true, where: "(status = ANY (ARRAY[1, 2]))"
   end
 
+  create_table "diary_entries", force: :cascade do |t|
+    t.bigint "account_id", null: false
+    t.text "description"
+    t.datetime "taken_at", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_id"], name: "index_diary_entries_on_account_id"
+  end
+
   add_foreign_key "account_email_auth_keys", "accounts", column: "id"
   add_foreign_key "account_login_change_keys", "accounts", column: "id"
   add_foreign_key "account_remember_keys", "accounts", column: "id"
   add_foreign_key "account_verification_keys", "accounts", column: "id"
+  add_foreign_key "diary_entries", "accounts"
 end
