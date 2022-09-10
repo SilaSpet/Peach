@@ -1,13 +1,10 @@
 class DiaryEntriesController < ApplicationController
-  before_action :set_diary_entry, only: %i[show edit update destroy]
+  before_action :set_diary_entry, only: %i[edit update destroy]
 
   def index
     @diary_entries = current_account.diary_entries.includes(
       body_measurements: :body_measurement_key
     ).order(taken_at: :asc).load
-  end
-
-  def show
   end
 
   def new
