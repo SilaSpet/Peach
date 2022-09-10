@@ -19,7 +19,7 @@ class BodyMeasurementKeysController < ApplicationController
     @body_measurement_key = current_account.body_measurement_keys.new(body_measurement_key_params)
 
     if @body_measurement_key.save
-      redirect_to(body_measurement_key_url(@body_measurement_key), notice: "Body measurement key was successfully created.")
+      redirect_to(body_measurement_keys_url, notice: "Body measurement key was successfully created.")
     else
       render(:new, status: :unprocessable_entity)
     end
@@ -27,7 +27,7 @@ class BodyMeasurementKeysController < ApplicationController
 
   def update
     if @body_measurement_key.update(body_measurement_key_params)
-      redirect_to(body_measurement_key_url(@body_measurement_key), notice: "Body measurement key was successfully updated.")
+      redirect_to(body_measurement_keys_url, notice: "Body measurement key was successfully updated.")
     else
       render(:edit, status: :unprocessable_entity)
     end
