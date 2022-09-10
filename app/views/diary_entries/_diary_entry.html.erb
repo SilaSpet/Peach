@@ -3,13 +3,13 @@
   <article class="p-8 sheet">
     <p class="mb-4 font-bold text-center text-normal"><%= diary_entry.taken_at.strftime("%d.%m.%Y") %></p>
     <dl class="grid grid-cols-3 gap-8">
-      <% diary_entry.measurements.each do |key, value| %>
+      <% diary_entry.body_measurements.each do |body_measurement| %>
       <div>
-        <dt class="text-sm font-medium leading-5 text-ink-light"><%= key %></dt>
-        <dd class="mt-1 text-normal"><%= value %></dd>
+        <dt class="text-sm font-medium leading-5 text-ink-light"><%= body_measurement.body_measurement_key.name %></dt>
+        <dd class="mt-1 text-normal"><%= body_measurement.value %></dd>
       </div>
       <% end %>
-      <div class="sm:col-span-3">
+      <div class="col-span-3">
         <dt class="text-sm font-medium leading-5 text-ink-light">Notes</dt>
         <dd class="mt-1 text-normal"><%= diary_entry.description %></dd>
       </div>
