@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  account: one
+  diary_entry: one
+  body_measurement_key: one
+  value: 1.5
+
+two:
+  account: two
+  diary_entry: two
+  body_measurement_key: two
+  value: 1.5
