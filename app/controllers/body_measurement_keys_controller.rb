@@ -1,11 +1,8 @@
 class BodyMeasurementKeysController < ApplicationController
-  before_action :set_body_measurement_key, only: %i[show edit update destroy]
+  before_action :set_body_measurement_key, only: %i[edit update destroy]
 
   def index
     @body_measurement_keys = current_account.body_measurement_keys.all
-  end
-
-  def show
   end
 
   def new
