@@ -1,0 +1,12 @@
+<section id="<%= dom_id(body_measurement_key) %>">
+  <%= link_to body_measurement_key_path(body_measurement_key) do %>
+  <article class="p-8 sheet">
+    <dl class="grid grid-cols-3 gap-8">
+      <div class="sm:col-span-3">
+        <dt class="text-sm font-medium leading-5 text-ink-light">Name</dt>
+        <dd class="mt-1 text-normal"><%= body_measurement_key.name %></dd>
+      </div>
+    </dl>
+  </article>
+  <% end %>
+</section>

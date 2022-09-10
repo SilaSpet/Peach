@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @body_measurement_key %>
+
+<div>
+  <%= link_to "Edit this body measurement key", edit_body_measurement_key_path(@body_measurement_key) %> |
+  <%= link_to "Back to body measurement keys", body_measurement_keys_path %>
+
+  <%= button_to "Destroy this body measurement key", @body_measurement_key, method: :delete %>
+</div>

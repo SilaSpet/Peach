@@ -1,0 +1,2 @@
+module BodyMeasurementKeysHelper
+end

@@ -1,0 +1,11 @@
+<p class="my-8 text-center">
+  <%= link_to '← Body Measurement Keys', body_measurement_keys_path, class: "btn btn-outline-primary-dark" %>
+</p>
+
+<section class="mt-8 content-snug">
+  <article class="p-4 sm:p-12 sheet">
+    <h1 class="mb-8 text-center">New Body Measurement Key</h1>
+
+    <%= render "form", body_measurement_key: @body_measurement_key %>
+  </article>
+</section>
