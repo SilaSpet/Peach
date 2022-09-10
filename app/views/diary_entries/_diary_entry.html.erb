@@ -1,0 +1,19 @@
+<section id="<%= dom_id(diary_entry) %>">
+  <%= link_to diary_entry_path(diary_entry) do %>
+  <article class="p-8 sheet">
+    <p class="mb-4 font-bold text-center text-normal"><%= diary_entry.taken_at.strftime("%d.%m.%Y") %></p>
+    <dl class="grid grid-cols-3 gap-8">
+      <% diary_entry.measurements.each do |key, value| %>
+      <div>
+        <dt class="text-sm font-medium leading-5 text-ink-light"><%= key %></dt>
+        <dd class="mt-1 text-normal"><%= value %></dd>
+      </div>
+      <% end %>
+      <div class="sm:col-span-3">
+        <dt class="text-sm font-medium leading-5 text-ink-light">Notes</dt>
+        <dd class="mt-1 text-normal"><%= diary_entry.description %></dd>
+      </div>
+    </dl>
+  </article>
+  <% end %>
+</section>

@@ -1,0 +1,51 @@
+class DiaryEntriesController < ApplicationController
+  before_action :set_diary_entry, only: %i[show edit update destroy]
+
+  def index
+    @diary_entries = current_account.diary_entries.order(taken_at: :desc)
+  end
+
+  def show
+  end
+
+  def new
+    @diary_entry = current_account.diary_entries.new
+  end
+
+  def edit
+  end
+
+  def create
+    @diary_entry = current_account.diary_entries.new(diary_entry_params)
+
+    if @diary_entry.save
+      redirect_to(diary_entry_url(@diary_entry), notice: "Diary Entry was successfully created.")
+    else
+      render(:new, status: :unprocessable_entity)
+    end
+  end
+
+  def update
+    if @diary_entry.update(diary_entry_params)
+      redirect_to(diary_entry_url(@diary_entry), notice: "Diary Entry was successfully updated.")
+    else
+      render(:edit, status: :unprocessable_entity)
+    end
+  end
+
+  def destroy
+    @diary_entry.destroy
+
+    redirect_to(diary_entries_url, notice: "Diary Entry was successfully destroyed.")
+  end
+
+  private
+
+  def set_diary_entry
+    @diary_entry = current_account.diary_entries.find(params[:id])
+  end
+
+  def diary_entry_params
+    params.require(:diary_entry).permit(:measurements, :description, :taken_at)
+  end
+end
