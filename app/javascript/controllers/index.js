@@ -9,3 +9,6 @@ application.register("hello", HelloController)
 
 import ChartController from "./chart_controller"
 application.register("chart", ChartController)
+
+import RemoveController from "./remove_controller"
+application.register("remove", RemoveController)

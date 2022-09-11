@@ -11,6 +11,14 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div id="flash" class="fixed z-50 w-full mt-4 mb-16 space-y-4 sm:max-w-sm sm:ml-8 sm:mt-12">
+      <% flash.each do |name, message| %>
+        <%= render partial: "shared/#{name}_flash", locals: { message: message } unless message.nil? %>
+      <% end %>
+    </div>
+
+    <main>
+      <%= yield %>
+    </main>
   </body>
 </html>
