@@ -1,5 +1,22 @@
 <section class="mt-8 content-tight">
   <article class="p-4 sm:p-12 sheet">
-    <h1 class="mb-8 text-center">Hi</h1>
+    <h1 class="mb-8 text-center">Hi Lea!</h1>
+
+    <h2 class="mb-2 uppercase form-label">What's up?</h2>
+    <div class="action-surface">
+      <nav class="action-group-vertical">
+        <%= link_to body_measurement_keys_path, class: "action-button justify-start flex" do %>
+          <svg class="w-6 h-6 mr-4 text-ink-light" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 5.25a3 3 0 013 3m3 0a6 6 0 01-7.029 5.912c-.563-.097-1.159.026-1.563.43L10.5 17.25H8.25v2.25H6v2.25H2.25v-2.818c0-.597.237-1.17.659-1.591l6.499-6.499c.404-.404.527-1 .43-1.563A6 6 0 1121.75 8.25z" /></svg>
+          <p class="flex-1">Body Measurement Keys</p>
+          <svg class="w-6 h-6 text-ink-light" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+        <% end %>
+
+        <%= link_to diary_entries_path, class: "action-button justify-start flex" do %>
+          <svg class="w-6 h-6 mr-4 text-ink-light" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75" /></svg>
+          <p class="flex-1">Diary Entries</p>
+          <svg class="w-6 h-6 text-ink-light" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+        <% end %>
+      </nav>
+    </div>
    </article>
 </section>

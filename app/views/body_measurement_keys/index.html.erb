@@ -1,0 +1,14 @@
+<p class="my-8 text-center">
+  <%= link_to '← Home', root_path, class: "btn btn-outline-primary-dark" %>
+</p>
+
+<section class="mt-8 content-snug">
+  <article class="p-4 sm:p-12 sheet">
+    <h1 class="mb-8 text-center">Body Measurement Keys</h1>
+    <%= link_to "New Body Measurement Key", new_body_measurement_key_path, class: "btn btn-secondary text-center block mb-16" %>
+
+    <div id="body_measurement_keys" class="space-y-8">
+      <%= render partial: 'body_measurement_key', collection: @body_measurement_keys %>
+    </div>
+  </article>
+</section>

@@ -1,0 +1,19 @@
+<p class="my-8 text-center">
+  <%= link_to '← Home', root_path, class: "btn btn-outline-primary-dark" %>
+</p>
+
+<section class="mt-8 content-snug">
+  <article class="p-4 sm:p-12 sheet">
+    <h1 class="mb-8 text-center">Diary Entries</h1>
+    <%= link_to "New Diary Entry", new_diary_entry_path, class: "btn btn-secondary text-center block" %>
+
+    <div class="my-16">
+      <%= content_tag :canvas, data: { controller: "chart", "chart-labels-value" => diary_entries_chart_labels, "chart-datasets-value" => diary_entries_chart_values } do %>
+      <% end %>
+    </div>
+
+    <div id="diary_entries" class="flex flex-col-reverse space-y-8 space-y-reverse">
+      <%= render partial: 'diary_entry', collection: @diary_entries %>
+    </div>
+  </article>
+</section>

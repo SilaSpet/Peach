@@ -1,0 +1,43 @@
+<section id="<%= dom_id(diary_entry) %>">
+  <%= form_with model: diary_entry, class: "space-y-4" do |form| %>
+    <% if diary_entry.errors.any? %>
+      <div style="color: red">
+        <h2><%= pluralize(diary_entry.errors.count, "error") %> prohibited this diary_entry from being saved:</h2>
+
+        <ul>
+          <% diary_entry.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <article class="p-8">
+      <div class="mb-4 text-center">
+        <%= form.label :taken_at, class: "text-sm font-medium leading-5 text-ink-light" %>
+        <%= form.date_field :taken_at, value: Date.today, class: "w-full form-input text-field" %>
+      </div>
+
+
+      <dl class="grid grid-cols-3 gap-4">
+        <% current_account.body_measurement_keys.each do |bmk| %>
+        <%= form.fields_for :body_measurements, diary_entry.body_measurements.find_or_initialize_by(body_measurement_key: bmk) do |body_measurement_fields| %>
+          <%= body_measurement_fields.hidden_field :body_measurement_key_id, value: body_measurement_fields.object.body_measurement_key.id %>
+
+          <div>
+            <%= body_measurement_fields.label :value, body_measurement_fields.object.body_measurement_key.name, class: "text-sm font-medium leading-5 text-ink-light" %>
+            <%= body_measurement_fields.number_field :value, inputmode: "decimal", step: 0.01, class: "w-full form-input text-field" %>
+          </div>
+        <% end %>
+        <% end %>
+
+        <div class="col-span-3">
+          <%= form.label :description, "Notes", class: "text-sm font-medium leading-5 text-ink-light" %>
+          <%= form.text_area :description, class: "w-full form-input text-field" %>
+        </div>
+      </dl>
+
+      <%= form.submit "Save", class: "btn btn-secondary w-full mt-8" %>
+    </article>
+  <% end %>
+</section>
